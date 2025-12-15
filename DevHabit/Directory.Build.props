@@ -10,6 +10,7 @@
       <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
       <CodeAnalysisTreatErrorsAsWarnings>true</CodeAnalysisTreatErrorsAsWarnings>
       <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+      <NoWarn>$(NoWarn);CA2007</NoWarn>
   </PropertyGroup>
 
   <!-- Override automático SOLO para builds dentro de Docker -->

@@ -14,11 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DOCKER_BUILD: true   # 👈 activa el override de analyzers
-
-    defaults:
-      run:
-        working-directory: DevHabit
+      DOCKER_BUILD: true
 
     steps:
       - uses: actions/checkout@v4
@@ -29,13 +25,13 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Restore
-        run: dotnet restore DevHabit.sln
+        run: dotnet restore DevHabit/DevHabit.sln
 
       - name: Build
-        run: dotnet build DevHabit.sln --configuration Release --no-restore
+        run: dotnet build DevHabit/DevHabit.sln --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test DevHabit.sln --configuration Release --no-restore --no-build
+        run: dotnet test DevHabit/DevHabit.sln --configuration Release --no-restore --no-build
 
       - name: Publish
-        run: dotnet publish DevHabit.sln --configuration Release --no-restore --no-build
+        run: dotnet publish DevHabit/DevHabit.sln --configuration Release --no-restore --no-build
