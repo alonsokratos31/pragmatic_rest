@@ -1,0 +1,31 @@
+<Project>
+  <PropertyGroup>
+      <TargetFramework>net9.0</TargetFramework>
+      <ImplicitUsings>enable</ImplicitUsings>
+      <Nullable>enable</Nullable>
+
+      <!-- Configuración estricta por defecto -->
+      <AnalysisLevel>latest</AnalysisLevel>
+      <AnalysisMode>All</AnalysisMode>
+      <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+      <CodeAnalysisTreatErrorsAsWarnings>true</CodeAnalysisTreatErrorsAsWarnings>
+      <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <!-- Override automático SOLO para builds dentro de Docker -->
+  <PropertyGroup Condition="'$(DOCKER_BUILD)' == 'true'">
+      <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+      <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+      <AnalysisMode>None</AnalysisMode>
+      <RunAnalyzers>false</RunAnalyzers>
+      <EnableNETAnalyzers>false</EnableNETAnalyzers>
+      <CodeAnalysisTreatErrorsAsWarnings>false</CodeAnalysisTreatErrorsAsWarnings>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(MSBuildProjectExtension)' != '.dcproj' ">
+    <PackageReference Include="SonarAnalyzer.CSharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>
