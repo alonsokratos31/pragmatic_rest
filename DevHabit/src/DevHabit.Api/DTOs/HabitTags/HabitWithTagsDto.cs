@@ -1,7 +1,7 @@
 ﻿using DevHabit.Api.DTOs.Habits;
 using DevHabit.Api.Entities;
 
-namespace DevHabit.Api.Controllers;
+namespace DevHabit.Api.DTOs.HabitTags;
 
 public sealed record HabitWithTagsDto
 {
